@@ -5,6 +5,7 @@ import Element.ElemRect;
 /**
  * Created by Dmitrii on 26.06.2017.
  */
+
 public class HorizontalLine extends Line {
     public HorizontalLine(Grid grid, int x, int y, int len) {
         super(x, y, len);

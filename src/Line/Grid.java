@@ -6,14 +6,13 @@ import java.awt.*;
  * Created by Dmitrii on 26.06.2017.
  */
 public class Grid {
-    private int cellPx;
+    private int cellPx = 30;
     private int countCellsX;
     private int countCellsY;
 
-    public Grid(int cellPx, int width, int heigh) {
-        this.cellPx = cellPx;
-        this.countCellsX = width;
-        this.countCellsY = heigh;
+    public Grid(int width, int heigh) {
+        this.countCellsX = width/cellPx - 1;
+        this.countCellsY = heigh/cellPx - 3;
     }
 
     public int getCellPx() {
