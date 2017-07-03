@@ -11,8 +11,8 @@ public class Grid {
     private int countCellsY;
 
     public Grid(int width, int heigh) {
-        this.countCellsX = width/cellPx - 1;
-        this.countCellsY = heigh/cellPx - 3;
+        this.countCellsX = width/cellPx ;
+        this.countCellsY = heigh/cellPx ;
     }
 
     public int getCellPx() {

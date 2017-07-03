@@ -15,7 +15,7 @@ public class ElemCircle extends Element {
 
     @Override
     public void print(Graphics g) {
-        g.setColor(Colors.clrWall);
+        g.setColor(Colors.clrSnake);
         g.fillOval(getXX(), getYY(), grid.getCellPx(), grid.getCellPx());
     }
 

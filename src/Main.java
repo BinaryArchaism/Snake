@@ -1,19 +1,42 @@
+import Line.Grid;
+import Line.Snake;
+
 import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Created by Dmitrii on 26.06.2017.
  */
 
-public class Main {
+public class Main extends JFrame {
 
-    static int heigth = 600;
-    static int width = 900;
+    public static final int height = 555;
+    public static final int width = 890;
 
-    public static void main(String[] args){
-        JFrame frame = new JFrame("Snake");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.setSize(width, heigth);
-        frame.add(new MainPanel());
+    public Main() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setSize(width, height);
+        add(new MainPanel());
+
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                Snake.handleKeyEvent(key);
+                repaint();
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        new Main();
     }
 }
