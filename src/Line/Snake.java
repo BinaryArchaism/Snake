@@ -10,26 +10,23 @@ import java.util.ArrayList;
  * Created by Dmitrii on 26.06.2017.
  */
 
-public class Snake{
+public class Snake extends Line{
     int length;
     int x, y;
-    ArrayList<ElemCircle> snk;
+    ArrayList<ElemCircle> snake;
     static Direction direction;
 
-    public Snake(Grid grid, int x, int y, int length) {
-        this.x = x;
-        this.y = y;
-        y += 1;
-        this.length = length;
-        snk = new ArrayList<ElemCircle>();
-        for (int i = 0; i < length; i++) {
-            snk.add(new ElemCircle(grid, x, y - 1));
-        }
+    public Snake(int x, int y, int length) {
+        super(x, y, length);
     }
 
-    public void draw(Graphics g) {
-        for (int i = 0; i > length; i++) {
-            snk.get(i).print(g);
+    public void draw(Graphics g, Grid grid, int length) {
+        this.length = length;
+        snake = new ArrayList<ElemCircle>();
+        for (int i = 0; i < length ; i++) {
+            snake.add(new ElemCircle(grid, x, y));
+        }for (int i = 0; i < length; i++) {
+            snake.get(i).print(g);
         }
     }
 
@@ -42,25 +39,23 @@ public class Snake{
 
     public static void handleKeyEvent(int key){
         switch (key){
-            case KeyEvent.VK_W : {
+            case KeyEvent.VK_UP : {
                 direction = Direction.Up;
                 break;
             }
-            case KeyEvent.VK_S : {
+            case KeyEvent.VK_DOWN : {
                 direction = Direction.Down;
                 break;
             }
-            case KeyEvent.VK_A : {
+            case KeyEvent.VK_LEFT : {
                 direction = Direction.Left;
                 break;
             }
-            case KeyEvent.VK_D : {
+            case KeyEvent.VK_RIGHT : {
                 direction = Direction.Right;
                 break;
             }
         }
     }
-
-    public enum Direction { Up, Right, Down, Left }
 
 }

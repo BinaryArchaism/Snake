@@ -3,12 +3,14 @@ package Line;
 import Element.Element;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Dmitrii on 26.06.2017.
  */
 abstract public class Line {
     Element elem[];
+    //ArrayList<Element> elem;
     int x, y;
     int length;
 

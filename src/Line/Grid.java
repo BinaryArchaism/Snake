@@ -34,5 +34,7 @@ public class Grid {
         for (int i = 1; i < countCellsY; i += 1)
             g.drawLine(0, i * cellPx, countCellsX  * cellPx, i * cellPx);
         }
+
+    public Grid getGrid() {return this;}
 }
 

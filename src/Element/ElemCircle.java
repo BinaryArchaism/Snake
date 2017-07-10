@@ -7,6 +7,7 @@ import java.awt.*;
 /**
  * Created by Dmitrii on 26.06.2017.
  */
+
 public class ElemCircle extends Element {
 
     public ElemCircle(Grid grid, int x, int y) {
