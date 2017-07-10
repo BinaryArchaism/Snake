@@ -10,14 +10,16 @@ import java.util.ArrayList;
  * Created by Dmitrii on 26.06.2017.
  */
 
-public class Snake extends Line{
+public class Snake{
     int length;
     int x, y;
     ArrayList<ElemCircle> snake;
     static Direction direction;
 
-    public Snake(int x, int y, int length) {
-        super(x, y, length);
+    public Snake(int length, int x, int y) {
+        this.length = length;
+        this.x = x;
+        this.y = y;
     }
 
     public void draw(Graphics g, Grid grid, int length) {
