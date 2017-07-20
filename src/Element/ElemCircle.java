@@ -22,7 +22,7 @@ public class ElemCircle extends Element {
 
     @Override
     public void clear(Graphics g) {
-        g.setColor(Colors.clrBack);
+        g.setColor(Colors.clrToClear);
         g.fillOval(getXX(), getYY(), grid.getCellPx(), grid.getCellPx());
     }
 

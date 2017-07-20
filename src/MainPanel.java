@@ -22,11 +22,11 @@ public class MainPanel extends JPanel {
     public MainPanel(){
         grid = new Grid(Main.width - 15, Main.height - 50);
         wall = new Wall(grid);
-        snake = new Snake(2 ,5, 5);
+        snake = new Snake(grid, 5 ,2, 10);
         timerListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                snake.moveInDirection();
                 repaint();
+                snake.moveInDirection();
             }
         };
         timer = new Timer(200, timerListener);
@@ -36,7 +36,7 @@ public class MainPanel extends JPanel {
     public void beginGame(Graphics g) {
         grid.drawGrid(g);
         wall.draw(g);
-        snake.draw(g, grid, 5);
+        snake.draw(g);
     }
 
     @Override

@@ -8,6 +8,7 @@ import java.awt.*;
 public class Colors {
     static Color clrWall = new Color(0,100,0);
     static Color clrBack = new Color(46, 139, 87);
+    static Color clrToClear = new Color(235, 235 ,235);
     static Color clrSnake = new Color(100, 0, 0);
     static Color clrCherry = new Color(150, 0, 0);
 }
