@@ -26,4 +26,15 @@ abstract public class Line {
             elem[i].print(g);
         }
     }
+
+    public Element[] getElem(){
+        return elem;
+    }
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
 }

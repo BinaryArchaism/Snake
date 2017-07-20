@@ -1,7 +1,4 @@
-import Element.ElemCircle;
-import Line.Grid;
-import Line.Snake;
-import Line.Wall;
+import Line.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,16 +24,29 @@ public class MainPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 repaint();
                 snake.moveInDirection();
+                if (isHit()) timer.stop();
             }
         };
         timer = new Timer(200, timerListener);
         timer.start();
     }
 
+    public boolean isHit() {
+        boolean hit = false;
+        for (Line l: wall.getWall()) {
+            if(snake.isHitWall(l.getElem())) {timer.stop();hit = true;}
+        }
+        for (Line l: wall.getBarrier()) {
+            if(snake.isHitWall(l.getElem())) {timer.stop();hit = true;}
+        }
+        return hit;
+    }
+
     public void beginGame(Graphics g) {
         grid.drawGrid(g);
         wall.draw(g);
         snake.draw(g);
+
     }
 
     @Override

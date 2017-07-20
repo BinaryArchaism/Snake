@@ -54,6 +54,14 @@ public class Snake{
         }
     }
 
+    public boolean isHitWall(Element[] elem){
+        boolean hit = false;
+        for (Element l : elem) {
+            if ((getHead().getXX() == l.getXX()) && (getHead().getYY() == l.getYY())) hit = true;
+        }
+        return hit;
+    }
+
     public void moveInDirection(){
         //ElemCircle nextPos;
         if (direction == Direction.Up ) {

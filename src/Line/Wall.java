@@ -22,6 +22,12 @@ public class Wall {
         buildBarrier(grid);
     }
 
+    public ArrayList<Line> getWall() {
+        return wall;
+    }
+    public ArrayList<Line> getBarrier() {
+        return barrier;
+    }
     public void buildBarrier(Grid grid) {
         barrier = new ArrayList<Line>();
         barrier.add(new VerticalLine(grid, 7,3,6));
