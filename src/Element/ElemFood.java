@@ -3,6 +3,7 @@ package Element;
 import Line.Grid;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by Dmitrii on 26.06.2017.
@@ -10,6 +11,19 @@ import java.awt.*;
 public class ElemFood extends Element {
     public ElemFood(Grid grid, int x, int y) {
         super(grid, x, y);
+    }
+
+    public boolean isHit(Element[] elements) {
+        boolean hit = false;
+        for (Element l : elements) {
+            if ((x == l.getXX()) && y == l.getYY()) hit = true;
+        }
+        return hit;
+    }
+
+    public int getRandom(Grid grid) {
+        Random random= new Random();
+        return random.nextInt()*grid.getCellPx();
     }
 
     @Override

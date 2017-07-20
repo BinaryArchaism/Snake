@@ -61,6 +61,12 @@ public class Snake{
         }
         return hit;
     }
+    public boolean isHitFood(ElemFood el){
+        if (getHead().getXX() == el.getXX() && getHead().getYY() == el.getYY()) {
+            return true;
+        }
+        else return false;
+    }
 
     public void moveInDirection(){
         //ElemCircle nextPos;
