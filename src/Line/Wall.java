@@ -13,9 +13,6 @@ public class Wall {
     ArrayList<Line> wall;
     ArrayList<Line> barrier;
     Grid grid;
-    int num;
-    int check;
-    boolean checker;
 
     public Wall(Grid grid){
         this.grid = grid;
@@ -30,9 +27,11 @@ public class Wall {
     public ArrayList<Line> getWall() {
         return wall;
     }
+
     public ArrayList<Line> getBarrier() {
         return barrier;
     }
+
     public void buildBarrier(Grid grid) {
         barrier = new ArrayList<Line>();
         barrier.add(new VerticalLine(grid, 7,3,6));
@@ -42,47 +41,38 @@ public class Wall {
         barrier.add(new VerticalLine(grid, 21, 9,4));
     }
 
-    public boolean isHitWall(Element[] elem){
-        boolean hit = false;
-        for (Element l : elem) {
-            if ((num == l.getXX())) hit = true;
-        }
-        return hit;
-    }
-    public boolean isHit() {
-        Wall wall = new Wall(grid);
-        boolean hit = false;
+    public int[] getSafetyNumber() {
+        boolean isHit = false;
+        int coords[] = new int[2];
         do {
-            for (Line l : wall.getWall()) {
-                if (isHitWall(l.getElem())) {
-                    hit = true;
-                    checker = hit;
+            coords[0] = (int) (1 + (Math.random() * 15));
+            coords[1] = (int) (1 + (Math.random() * 15));
+            for (int i = 0; i < barrier.size(); i++) {
+                for (int j = 0; j < barrier.get(i).getElem().length; j++) {
+                    if (barrier.get(i).getElem()[j].getXX() == coords[0] &&
+                            barrier.get(i).getElem()[j].getYY() == coords[1]) {
+                        isHit = true;
+                    }
                 }
             }
-            for (Line l : wall.getBarrier()) {
-                if (isHitWall(l.getElem())) {
-                    hit = true;
-                }
-            }
-        } while (checker != hit);
-        return hit;
-    }
-
-    public int getSafetyNumber() {
-        do {
-            for (Line l : wall) {
-                do {
-                    num = (int) (1 + (Math.random() * 15));
-                    check = num;
-                } while (isHit());
-            }
-            for (Line l : barrier) {
-                do {
-                    num = (int) (1 + (Math.random() * 15));
-                } while (isHit());
-            }
-        } while (check != num);
-        return num;
+        } while (isHit);
+//        do {
+////            coords[0] = (int) (1 + (Math.random() * 15));
+////            coords[1] = (int) (1 + (Math.random() * 15));
+////            for (int i = 0; i < barrier.size(); i++) {
+////                Element[] elem = barrier.get(i).getElem();
+////                for (int j = 0; j < elem.length ; j++) {
+////                    if (coords[0] == elem[j].getXX() && coords[1] == elem[j].getYY()) isHit = true;
+////                }
+////            }
+//            for (Line l : barrier) {
+//                Element el[] = l.getElem();
+//                for (Element e : el) {
+//                    if (e.getXX() == coords[0] && e.getYY() == coords[1]) isHit = true;
+//                }
+//            }
+//        } while (!isHit);
+        return coords;
     }
 
     public void draw(Graphics g){
