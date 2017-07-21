@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 abstract public class Line {
     Element elem[];
-    //ArrayList<Element> elem;
     int x, y;
     int length;
 
@@ -29,12 +28,5 @@ abstract public class Line {
 
     public Element[] getElem(){
         return elem;
-    }
-
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
     }
 }
