@@ -1,5 +1,7 @@
 package Line;
 
+import Element.Element;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -11,6 +13,9 @@ public class Wall {
     ArrayList<Line> wall;
     ArrayList<Line> barrier;
     Grid grid;
+    int num;
+    int check;
+    boolean checker;
 
     public Wall(Grid grid){
         this.grid = grid;
@@ -35,6 +40,49 @@ public class Wall {
         barrier.add(new VerticalLine(grid, 17, 7, 5));
         barrier.add(new HorizontalLine(grid, 17, 12, 4));
         barrier.add(new VerticalLine(grid, 21, 9,4));
+    }
+
+    public boolean isHitWall(Element[] elem){
+        boolean hit = false;
+        for (Element l : elem) {
+            if ((num == l.getXX())) hit = true;
+        }
+        return hit;
+    }
+    public boolean isHit() {
+        Wall wall = new Wall(grid);
+        boolean hit = false;
+        do {
+            for (Line l : wall.getWall()) {
+                if (isHitWall(l.getElem())) {
+                    hit = true;
+                    checker = hit;
+                }
+            }
+            for (Line l : wall.getBarrier()) {
+                if (isHitWall(l.getElem())) {
+                    hit = true;
+                }
+            }
+        } while (checker != hit);
+        return hit;
+    }
+
+    public int getSafetyNumber() {
+        do {
+            for (Line l : wall) {
+                do {
+                    num = (int) (1 + (Math.random() * 15));
+                    check = num;
+                } while (isHit());
+            }
+            for (Line l : barrier) {
+                do {
+                    num = (int) (1 + (Math.random() * 15));
+                } while (isHit());
+            }
+        } while (check != num);
+        return num;
     }
 
     public void draw(Graphics g){

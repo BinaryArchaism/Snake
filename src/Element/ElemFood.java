@@ -1,6 +1,6 @@
 package Element;
 
-import Line.Grid;
+import Line.*;
 
 import java.awt.*;
 import java.util.Random;
@@ -11,14 +11,6 @@ import java.util.Random;
 public class ElemFood extends Element {
     public ElemFood(Grid grid, int x, int y) {
         super(grid, x, y);
-    }
-
-    public boolean isHit(Element[] elements) {
-        boolean hit = false;
-        for (Element l : elements) {
-            if ((x == l.getXX()) && y == l.getYY()) hit = true;
-        }
-        return hit;
     }
 
     public int getRandom(Grid grid) {

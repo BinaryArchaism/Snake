@@ -61,11 +61,37 @@ public class Snake{
         }
         return hit;
     }
+    public boolean isHit() {
+        Wall wall = new Wall(grid);
+        boolean hit = false;
+        for (Line l: wall.getWall()) {
+            if(isHitWall(l.getElem())) {hit = true;}
+        }
+        for (Line l: wall.getBarrier()) {
+            if(isHitWall(l.getElem())) {hit = true;}
+        }
+        return hit;
+    }
     public boolean isHitFood(ElemFood el){
         if (getHead().getXX() == el.getXX() && getHead().getYY() == el.getYY()) {
             return true;
         }
         else return false;
+    }
+    public int[] getSnakeCoordinats(int index) {
+        int[] coords = new int[2];
+        ElemCircle el = snake.get(index);
+        coords[0] = el.getXX();
+        coords[1] = el.getYY();
+        return coords;
+    }
+    public boolean isHitBody() {
+        boolean hit = false;
+        for (int i = 1; i < snake.size()-1; i++) {
+            int coords[] = getSnakeCoordinats(i);
+            if (getHead().getXX() == coords[0] && getHead().getYY() == coords[1]) hit = true;
+        }
+        return hit;
     }
 
     public void moveInDirection(){
