@@ -25,7 +25,8 @@ public class MainPanel extends JPanel {
         grid = new Grid(Main.width - 15, Main.height - 50);
         wall = new Wall(grid);
         snake = new Snake(grid, 5 ,2, 10);
-        elemFood = new ElemFood(grid, wall.getSafetyNumber(), wall.getSafetyNumber());
+        int[] coords = wall.getSafetyNumber();
+        elemFood = new ElemFood(grid, coords[0], coords[1]);
         timerListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 repaint();
@@ -40,7 +41,8 @@ public class MainPanel extends JPanel {
                     snake.add();
                     sound = new Sound("Sounds/eat.wav");
                     sound.play();
-                    elemFood = new ElemFood(grid, wall.getSafetyNumber(),wall.getSafetyNumber());
+                    int[] coords = wall.getSafetyNumber();
+                    elemFood = new ElemFood(grid, coords[0], coords[1]);
                     countOfEatenFood++;
                     foodEaten = true;
                 }

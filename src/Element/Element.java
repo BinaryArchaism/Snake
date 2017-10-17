@@ -25,6 +25,9 @@ public abstract class Element {
         return y * grid.getCellPx();
     }
 
+    public int getX() {return x ; }
+    public int getY() {return y ;}
+
     public abstract void print(Graphics g);
     public abstract  Element getElement();
     public abstract void clear(Graphics g);

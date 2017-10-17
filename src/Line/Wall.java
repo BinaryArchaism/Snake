@@ -44,35 +44,18 @@ public class Wall {
     public int[] getSafetyNumber() {
         boolean isHit = false;
         int coords[] = new int[2];
-        do {
-            coords[0] = (int) (1 + (Math.random() * 15));
-            coords[1] = (int) (1 + (Math.random() * 15));
-            for (int i = 0; i < barrier.size(); i++) {
-                for (int j = 0; j < barrier.get(i).getElem().length; j++) {
-                    if (barrier.get(i).getElem()[j].getXX() == coords[0] &&
-                            barrier.get(i).getElem()[j].getYY() == coords[1]) {
-                        isHit = true;
-                    }
+        coords[0] = (int) (1 + (Math.random() * (grid.getCountCellsX()-2)));//   coords[0] = (int) (1 + (Math.random() * 15));
+        coords[1] = (int) (1 + (Math.random() * (grid.getCountCellsY()-2)));//   coords[1] = (int) (1 + (Math.random() * 15));
+
+        for (int i = 0; i < barrier.size(); i++) {
+            for (int j = 0; j < barrier.get(i).getElem().length; j++) {
+                if (barrier.get(i).getElem()[j].getX() == coords[0] &&
+                        barrier.get(i).getElem()[j].getY() == coords[1]) {
+                    isHit = true;
                 }
             }
-        } while (isHit);
-//        do {
-////            coords[0] = (int) (1 + (Math.random() * 15));
-////            coords[1] = (int) (1 + (Math.random() * 15));
-////            for (int i = 0; i < barrier.size(); i++) {
-////                Element[] elem = barrier.get(i).getElem();
-////                for (int j = 0; j < elem.length ; j++) {
-////                    if (coords[0] == elem[j].getXX() && coords[1] == elem[j].getYY()) isHit = true;
-////                }
-////            }
-//            for (Line l : barrier) {
-//                Element el[] = l.getElem();
-//                for (Element e : el) {
-//                    if (e.getXX() == coords[0] && e.getYY() == coords[1]) isHit = true;
-//                }
-//            }
-//        } while (!isHit);
-        return coords;
+        }
+            return coords;
     }
 
     public void draw(Graphics g){
