@@ -44,6 +44,7 @@ public class Wall {
     public int[] getSafetyNumber() {
         boolean isHit = false;
         int coords[] = new int[2];
+        do {
         coords[0] = (int) (1 + (Math.random() * (grid.getCountCellsX()-2)));//   coords[0] = (int) (1 + (Math.random() * 15));
         coords[1] = (int) (1 + (Math.random() * (grid.getCountCellsY()-2)));//   coords[1] = (int) (1 + (Math.random() * 15));
 
@@ -55,6 +56,7 @@ public class Wall {
                 }
             }
         }
+        } while (isHit);
             return coords;
     }
 
